@@ -60,10 +60,9 @@ class Car(models.Model):
         return self.model
 
 class Sale(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, default=None, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, default=None, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
-    
+        return f'{self.client} : {self.car}'
